@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FA-Checker.cpp" />
+    <ClCompile Include="readFA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FA.h" />

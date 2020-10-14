@@ -7,23 +7,16 @@
 #include <unordered_set>
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
+extern std::optional<FA> readFA(std::string);
 int main()
 {
-   
-
-    FA nfa{'p'};
-    nfa.addTransition('p', '0', std::unordered_set<char>{'p'});
-    nfa.addTransition('p', '1', std::unordered_set<char>{'p','q'});
-    nfa.addTransition('q', '0', std::unordered_set<char>{'t'});
-    nfa.addTransition('q', '1', std::unordered_set<char>{'t'});
-    nfa.addTransition('t', '0', std::unordered_set<char>{});
-    nfa.addTransition('t', '1', std::unordered_set<char>{});
-
-   //auto result=nfa.step(std::unordered_set<char>{'p'}, '1');
-    auto result = nfa.run("0110");
-
-   for (auto& p : result)
-       std::cout << p << ",";
-    
-   
+    if (auto n = readFA("data.txt")) {
+        FA nfa = *n;
+        bool r = nfa.accept("101101010101");
+        std::cout << std::boolalpha << r << std::endl;
+    }
+    else {
+        std::cout << "could not read input\n";
+        exit(1);
+    }
 }
