@@ -16,7 +16,7 @@ int main(int argc,char **argv)
     }
     if (auto n = readFA("data.txt")) {
         FA nfa = *n;
-        bool r = nfa.accept("101101010101");
+        bool r = nfa.accept("101101010111");
         std::cout << std::boolalpha << r << std::endl;
     }
     else {
