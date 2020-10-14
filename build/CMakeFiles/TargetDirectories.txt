@@ -1,2 +1,0 @@
-C:/Users/hikmat/source/repos/FA-Checker/build/CMakeFiles/FA-checker.dir
-C:/Users/hikmat/source/repos/FA-Checker/build/CMakeFiles/ALL_BUILD.dir
