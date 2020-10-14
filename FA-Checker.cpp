@@ -8,8 +8,12 @@
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
 extern std::optional<FA> readFA(std::string);
-int main()
+int main(int argc,char **argv)
 {
+    if (argc < 2) {
+        std::cout << "Usage FA-checker NFA description\n";
+        exit(1);
+    }
     if (auto n = readFA("data.txt")) {
         FA nfa = *n;
         bool r = nfa.accept("101101010101");
