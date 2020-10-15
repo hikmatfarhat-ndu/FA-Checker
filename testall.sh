@@ -22,7 +22,4 @@ echo "----------"
 echo "Problem 2"
 echo "----------"
 ./FA-Checker ../2.txt ../2-tests.txt|tee -a grade
-cut -d ' ' -f 4 grade
-cut -d ' ' -f 3 grade
-cut -d ' ' -f 2 grade
-cut -d ' ' -f 5 grade
+cut -d ' ' -f 5 grade|paste -sd +|bc
