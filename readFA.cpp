@@ -5,8 +5,6 @@
 #include <algorithm>
 #include <optional>
 #include <boost/algorithm/string.hpp>
-#include <windows.h>
-#include <filesystem>
 #include "FA.h"
 
 std::optional<FA> readFA(std::string filename) {
