@@ -25,14 +25,15 @@ int main(int argc,char **argv)
             for (auto& [a, b] : v) {
                 //std::cout << a << " " <<std::boolalpha<< b << "\n";
                 bool r = nfa.accept(a);
-                if (r == b)std::cout << "\x1B[32mcheck" << count
+                if (r == b)std::cout << "\x1B[32mcheck " << count
                 <<" passed \033[0m\n";
                 else {
-                    std::cout << "\x1B[31mnot check "<<count
-                        <<"failed \033[0m";
+                    std::cout << "\x1B[31mncheck "<<count
+                        <<" failed \033[0m";
                     std::cout << " Input:" << a
                         << " Expected: " << b << " Result:" << r << std::endl;
                 }
+                ++count;
             }
         }
        
