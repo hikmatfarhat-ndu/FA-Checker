@@ -13,4 +13,4 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Create Build Environment
-      run: sh test.sh
+      run: sh testall.sh
