@@ -25,10 +25,10 @@ int main(int argc,char **argv)
                 //std::cout << a << " " <<std::boolalpha<< b << "\n";
                 bool r = nfa.accept(a);
                 if (r == b)std::cout << "\x1B[32mcheck " << count
-                <<" passed \033[0m "<<c<<"/"<<c<<"\n";
+                <<" passed \033[0m "<<c<<" /"<<c<<"\n";
                 else {
                     std::cout << "\x1B[31mcheck "<<count
-                        <<" failed \033[0m "<<0<<"/"<<c<<" ";
+                        <<" failed \033[0m "<<0<<" /"<<c<<" ";
                     std::cout << " Input:" << a
                         << " Expected: " << r<< " Result:" << b << std::endl;
                 }
