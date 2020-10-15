@@ -1,6 +1,10 @@
-11110101 true
-001 false
-1001 false
-101011111 true
-010101 false
-01010101 true
+epsilon true 1
+11110101 true 1
+001 false 1
+1001 false 1
+101011111 true 1
+010101 false 1
+01010101 true 1
+111111 true 1
+111 true 1
+001001 false 1

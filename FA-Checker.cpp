@@ -18,16 +18,16 @@ int main(int argc,char **argv)
     if (auto n = readFA(argv[1]) ) {
         FA nfa = *n;
         if (auto t = readTests(argv[2])) {
-            std::vector<std::pair<std::string, bool>> v = *t;
+            std::vector<std::tuple<std::string, bool,std::string>> v = *t;
             int count = 1;
-            for (auto& [a, b] : v) {
+            for (auto& [a, b,c] : v) {
                 //std::cout << a << " " <<std::boolalpha<< b << "\n";
                 bool r = nfa.accept(a);
                 if (r == b)std::cout << "\x1B[32mcheck " << count
-                <<" passed \033[0m\n";
+                <<" passed \033[0m\t"<<c<<"/"<<c<<"\n";
                 else {
                     std::cout << "\x1B[31mcheck "<<count
-                        <<" failed \033[0m";
+                        <<" failed \033[0m\t"<<0<<"/"<<c<<" ";
                     std::cout << " Input:" << a
                         << " Expected: " << r<< " Result:" << b << std::endl;
                 }

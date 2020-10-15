@@ -12,18 +12,18 @@ std::string tolower(std::string s) {
 	return s;
 
 }
-std::optional<std::vector<std::pair<std::string,bool>>>
+std::optional<std::vector<std::tuple<std::string,bool,std::string>>>
 readTests(std::string filename) {
 
 	std::ifstream file;
 	file.open(filename);
-	std::string input, expected;
-	std::vector<std::pair<std::string,bool>> tests;
+	std::string input, expected,points;
+	std::vector<std::tuple<std::string,bool,std::string>> tests;
 	if (file.is_open()) {
-		while (file >> input >> expected) {
+		while (file >> input >> expected>>points) {
 			if (input == "epsilon")input = "";
 			bool e = (tolower(expected) == "true" ? true : false);
-			tests.push_back(std::make_pair(input, e));
+			tests.push_back(std::make_tuple(input, e,points));
 		}
 		file.close();
 		return tests;
