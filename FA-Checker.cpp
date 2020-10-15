@@ -28,7 +28,7 @@ int main(int argc,char **argv)
                 if (r == b)std::cout << "\x1B[32mcheck " << count
                 <<" passed \033[0m\n";
                 else {
-                    std::cout << "\x1B[31mncheck "<<count
+                    std::cout << "\x1B[31mcheck "<<count
                         <<" failed \033[0m";
                     std::cout << " Input:" << a
                         << " Expected: " << b << " Result:" << r << std::endl;
