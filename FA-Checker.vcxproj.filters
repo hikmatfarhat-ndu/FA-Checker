@@ -21,6 +21,9 @@
     <ClCompile Include="readFA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="readTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FA.h">

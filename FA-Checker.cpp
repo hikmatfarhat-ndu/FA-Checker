@@ -8,16 +8,31 @@
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
 extern std::optional<FA> readFA(std::string);
+extern std::optional<std::vector<std::pair<std::string,bool>>>
+readTests(std::string);
+
 int main(int argc,char **argv)
 {
-    if (argc < 2) {
-        std::cout << "Usage FA-checker NFA description\n";
+    if (argc < 3) {
+        std::cout << "Usage FA-checker NFA-description Tests\n";
         exit(1);
     }
-    if (auto n = readFA(argv[1])) {
+    if (auto n = readFA(argv[1]) ) {
         FA nfa = *n;
-        bool r = nfa.accept("101101010111");
-        std::cout << std::boolalpha << r << std::endl;
+        if (auto t = readTests(argv[2])) {
+            std::vector<std::pair<std::string, bool>> v = *t;
+            for (auto& [a, b] : v) {
+                //std::cout << a << " " <<std::boolalpha<< b << "\n";
+                bool r = nfa.accept(a);
+                if (r == b)std::cout << "\x1B[32mcorrect\033[0m\n";
+                else {
+                    std::cout << "\x1B[31mnot correct\033[0m";
+                    std::cout << " Input:" << a
+                        << " Expected: " << b << " Result:" << r << std::endl;
+                }
+            }
+        }
+       
     }
     else {
         std::cout << "could not read input\n";

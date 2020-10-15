@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="FA-Checker.cpp" />
     <ClCompile Include="readFA.cpp" />
+    <ClCompile Include="readTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FA.h" />
