@@ -1,8 +1,0 @@
-## DFA that accepts all even length strings
-
-starting-p
-accepting-p
-p-0-q
-p-1-q
-q-0-p
-q-1-p
