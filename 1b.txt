@@ -1,27 +1,10 @@
 ## DFA that accepts strings with exactly two 0's and at least two 1's
-starting-p0q0
-accepting-p2q2
-p0q0-0-p1q0
-p0q0-1-p0q1
-p1q0-0-p2q0
-p1q0-1-p1q1
-p2q0-0-p3q0
-p2q0-1-p2q1
-p3q0-0-p3q0
-p3q0-1-p3q1
-p0q1-0-p1q1
-p0q1-1-p0q2
-p1q1-0-p2q1
-p1q1-1-p1q2
-p2q1-0-p3q1
-p2q1-1-p2q2
-p3q1-0-p3q1
-p3q1-1-p3q2
-p0q2-0-p1q2
-p0q2-1-p0q2
-p1q2-0-p2q2
-p1q2-1-p1q2
-p2q2-0-p3q2
-p2q2-1-p2q2
-p3q2-0-p3q2
-p3q2-1-p3q2
+## The formatting is as follows
+## first entry MUST be the starting state. Example: starting-p0
+## the second entry MUST be the (set) of accepting states. Example: accepting-q0
+## if you have more than one accepting state separate them with comma.
+## example: accepting-q0,p1,t
+## the remaining entries, one per line, are for the transitions
+##of the form: fromState-symbol-toState. Example p0-1-q1. 
+## if you have an NFA with multiple toState separate them with commas like for the accepting.
+

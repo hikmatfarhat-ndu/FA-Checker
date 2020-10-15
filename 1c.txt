@@ -1,16 +1,12 @@
-## DFA that accepts all the strings that have even number of 0's and each zero is followed by a 1
-starting-p_0q_0
-accepting-p_0q_0
-p_0q_0-0-p_1q_1
-p_0q_0-1-p_0q_0
-p_1q_1-0-p_0R
-p_1q_1-1-p_1q_0
-p_0R-0-p_1R
-p_0R-1-p_0R
-p_1R-0-p_0R
-p_1R-1-p_1R
-p_1q_0-0-p_0q_1
-p_1q_0-1-p_1q_0
-p_0q_1-0-p_1R
-p_0q_1-1-p_0q_0
+## DFA that accepts all the strings that have even number of 0's and 
+#each zero is followed by a 1
+
+## The formatting is as follows
+## first entry MUST be the starting state. Example: starting-p0
+## the second entry MUST be the (set) of accepting states. Example: accepting-q0
+## if you have more than one accepting state separate them with comma.
+## example: accepting-q0,p1,t
+## the remaining entries, one per line, are for the transitions
+##of the form: fromState-symbol-toState. Example p0-1-q1. 
+## if you have an NFA with multiple toState separate them with commas like for the accepting.
 

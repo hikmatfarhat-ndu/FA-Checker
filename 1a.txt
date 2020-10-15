@@ -1,18 +1,10 @@
 #DFA that accepts strings that start with one and end with 0
-
-##
-starting-p0
-##
-
-accepting- p2
-
-p0- 0- r
-##
-p0- 1- p1
- 
-p1-0 -p2
- p1 - 1-p1
-
-p2-0-p2
-p2-1-p1
+## The formatting is as follows
+## first entry MUST be the starting state. Example: starting-p0
+## the second entry MUST be the (set) of accepting states. Example: accepting-q0
+## if you have more than one accepting state separate them with comma.
+## example: accepting-q0,p1,t
+## the remaining entries, one per line, are for the transitions
+##of the form: fromState-symbol-toState. Example p0-1-q1. 
+## if you have an NFA with multiple toState separate them with commas like for the accepting.
 
