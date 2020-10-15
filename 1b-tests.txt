@@ -1,0 +1,6 @@
+010101 true
+1110110111 true
+100 false
+00 false
+111 false
+11101111011111 true

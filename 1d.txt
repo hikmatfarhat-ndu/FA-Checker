@@ -1,0 +1,15 @@
+## DFA that accepts all strings that start with 0 and have odd lengths or start with 1
+## and have even length
+
+starting-p_0q_0
+accepting-p_1R,Rq_2
+p_0q_0-0-p_1R
+p_0q_0-1-Rq_1
+p_1R-0-p_2R
+p_1R-1-p_2R
+p_2R-0-p_1R
+p_2R-1-p_1R
+Rq_1-0-Rq_2
+Rq_1-1-Rq_2
+Rq_2-0-Rq_1
+Rq_2-1-Rq_1

@@ -21,6 +21,7 @@ readTests(std::string filename) {
 	std::vector<std::pair<std::string,bool>> tests;
 	if (file.is_open()) {
 		while (file >> input >> expected) {
+			if (input == "epsilon")input = "";
 			bool e = (tolower(expected) == "true" ? true : false);
 			tests.push_back(std::make_pair(input, e));
 		}

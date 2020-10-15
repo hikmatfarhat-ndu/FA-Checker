@@ -1,0 +1,14 @@
+### DFA that accepts strings that do not contain 1010
+
+starting-p_0
+accepting-p_0,p_1,p_2,p_3
+p_0-0-p_0
+p_0-1-p_1
+p_1-0-p_2
+p_1-1-p_1
+p_2-0-p_0
+p_2-1-p_3
+p_3-0-p_4
+p_3-1-p_1
+p_4-0-p_4
+p_4-1-p_4

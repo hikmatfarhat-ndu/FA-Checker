@@ -1,0 +1,8 @@
+10010 false
+10011 false
+10100 true
+11110 true
+epsilon true
+11 flase
+10000 false
+10111 false

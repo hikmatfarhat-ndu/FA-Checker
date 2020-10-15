@@ -7,9 +7,7 @@
 #include <unordered_set>
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
-extern std::optional<FA> readFA(std::string);
-extern std::optional<std::vector<std::pair<std::string,bool>>>
-readTests(std::string);
+#include "utils.h"
 
 int main(int argc,char **argv)
 {
@@ -31,7 +29,7 @@ int main(int argc,char **argv)
                     std::cout << "\x1B[31mcheck "<<count
                         <<" failed \033[0m";
                     std::cout << " Input:" << a
-                        << " Expected: " << b << " Result:" << r << std::endl;
+                        << " Expected: " << r<< " Result:" << b << std::endl;
                 }
                 ++count;
             }

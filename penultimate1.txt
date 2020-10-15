@@ -1,3 +1,4 @@
+## NFA that accepts all strings whose penultimate symbol is 1
 starting-p
 accepting- t
 # comment

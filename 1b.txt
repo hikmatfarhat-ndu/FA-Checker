@@ -1,0 +1,27 @@
+## DFA that accepts strings with exactly two 0's and at least two 1's
+starting-p0q0
+accepting-p2q2
+p0q0-0-p1q0
+p0q0-1-p0q1
+p1q0-0-p2q0
+p1q0-1-p1q1
+p2q0-0-p3q0
+p2q0-1-p2q1
+p3q0-0-p3q0
+p3q0-1-p3q1
+p0q1-0-p1q1
+p0q1-1-p0q2
+p1q1-0-p2q1
+p1q1-1-p1q2
+p2q1-0-p3q1
+p2q1-1-p2q2
+p3q1-0-p3q1
+p3q1-1-p3q2
+p0q2-0-p1q2
+p0q2-1-p0q2
+p1q2-0-p2q2
+p1q2-1-p1q2
+p2q2-0-p3q2
+p2q2-1-p2q2
+p3q2-0-p3q2
+p3q2-1-p3q2

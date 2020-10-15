@@ -1,0 +1,9 @@
+10001 false
+101010 true
+01101 false
+010101 false
+010100 false
+10101 false
+101010 true
+11110 true
+111100000 true

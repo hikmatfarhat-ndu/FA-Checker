@@ -1,0 +1,8 @@
+01011 true
+0101 false
+01 false
+0111111 true
+10 true
+1000 true
+11 true
+111 false

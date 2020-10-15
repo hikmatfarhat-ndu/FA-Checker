@@ -1,0 +1,18 @@
+#DFA that accepts strings that start with one and end with 0
+
+##
+starting-p0
+##
+
+accepting- p2
+
+p0- 0- r
+##
+p0- 1- p1
+ 
+p1-0 -p2
+ p1 - 1-p1
+
+p2-0-p2
+p2-1-p1
+
