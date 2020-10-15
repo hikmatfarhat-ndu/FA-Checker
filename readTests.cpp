@@ -5,6 +5,7 @@
 #include <iostream>
 #include <utility>
 #include <algorithm>
+#include <tuple>
 std::string tolower(std::string s) {
 	std::transform(s.begin(), s.end(),
 		s.begin(),

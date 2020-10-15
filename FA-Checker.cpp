@@ -5,6 +5,7 @@
 #include <utility>
 #include <unordered_map>
 #include <unordered_set>
+#include <tuple>
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
 #include "utils.h"
