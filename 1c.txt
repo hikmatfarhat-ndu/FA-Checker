@@ -9,8 +9,6 @@
 ## the remaining entries, one per line, are for the transitions
 ##of the form: fromState-symbol-toState. Example p0-1-q1. 
 ## if you have an NFA with multiple toState separate them with commas like for the accepting.
-starting-p0
-aca-p1,p2
 ## below is a minimal DFA with one state
 starting-p0
 accepting-p0
