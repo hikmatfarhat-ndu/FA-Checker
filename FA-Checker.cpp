@@ -21,12 +21,15 @@ int main(int argc,char **argv)
         FA nfa = *n;
         if (auto t = readTests(argv[2])) {
             std::vector<std::pair<std::string, bool>> v = *t;
+            int count = 1;
             for (auto& [a, b] : v) {
                 //std::cout << a << " " <<std::boolalpha<< b << "\n";
                 bool r = nfa.accept(a);
-                if (r == b)std::cout << "\x1B[32mcorrect\033[0m\n";
+                if (r == b)std::cout << "\x1B[32mcheck" << count
+                <<" passed \033[0m\n";
                 else {
-                    std::cout << "\x1B[31mnot correct\033[0m";
+                    std::cout << "\x1B[31mnot check "<<count
+                        <<"failed \033[0m";
                     std::cout << " Input:" << a
                         << " Expected: " << b << " Result:" << r << std::endl;
                 }
