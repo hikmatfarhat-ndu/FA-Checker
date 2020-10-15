@@ -14,7 +14,7 @@ int main(int argc,char **argv)
         std::cout << "Usage FA-checker NFA description\n";
         exit(1);
     }
-    if (auto n = readFA("data.txt")) {
+    if (auto n = readFA(argv[1])) {
         FA nfa = *n;
         bool r = nfa.accept("101101010111");
         std::cout << std::boolalpha << r << std::endl;

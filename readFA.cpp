@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <optional>
 #include <boost/algorithm/string.hpp>
+#include <windows.h>
+#include <filesystem>
 #include "FA.h"
 
 std::optional<FA> readFA(std::string filename) {
@@ -68,7 +70,10 @@ std::optional<FA> readFA(std::string filename) {
 		}
 	}
 	else {
-		std::cout << "cannot open file\n";
+		std::cout << "cannot open file:"<<filename<<"\n";
+		//std::string s(get_current_dir_name());
+		//std::cout<<s<<std::endl;
+		return {};
 	}
 	return nfa;
 
