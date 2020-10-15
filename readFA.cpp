@@ -28,14 +28,19 @@ std::optional<FA> readFA(std::string filename) {
 			std::vector<std::string> v;
 			boost::split(v, tmp,
 				boost::is_any_of("-"));
-			if (v.size() != 2) {
+			if (v.size() != 2 || v[0]!="starting") {
 				std::cout << "invalid starting state\n";
 				return {};
 			}
+			
 			starting = v[1];
 			break;
 		}
-		
+		// if no starting state
+		if (starting == "") {
+			std::cout << "missing starting state\n";
+			return {};
+		}
 		//process the accepting set
 		while(std::getline(file, tmp)) {
 			tmp.erase(
@@ -43,14 +48,19 @@ std::optional<FA> readFA(std::string filename) {
 				tmp.end());
 			if (tmp=="" || tmp.find('#') != std::string::npos)continue;
 			std::vector<std::string> v;
-			
 			boost::split(v, tmp,
 				boost::is_any_of("-,"));
-			
+			if (v[0] != "accepting") {
+				std::cout << "invalid accepting\n";
+				return {};
+			}
 			accepting.insert(v.begin() + 1, v.end());
 			break;
 		}
-		
+		if (accepting.empty()) {
+			std::cout << "missing accepting state(s)\n";
+			return {};
+		}
 		nfa.starting() = starting;
 		nfa.accepting()=accepting;
 		while (std::getline(file, tmp)) {
