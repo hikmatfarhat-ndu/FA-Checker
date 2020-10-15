@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(Boost 1.72.0) 
 
-add_executable(FA-Checker FA-Checker.cpp readFA.cpp )
+add_executable(FA-Checker FA-Checker.cpp readFA.cpp readTests.cpp )
 target_include_directories(FA-Checker PUBLIC "${PROJECT_SOURCE_DIR}")
 include_directories(${Boost_INCLUDE_DIRS}) 
