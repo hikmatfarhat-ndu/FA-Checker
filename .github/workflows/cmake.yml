@@ -6,28 +6,16 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Create Build Environment
-      run: sh testall.sh
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-
-        path: tests/grade
-  
-    - uses: actions/github-script@v3
-      with: 
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-           github.issues.createComment({
-              issue_number: 3,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 from autograding!'
-            })
+      run: sh setup.sh
+  test1:
+     needs: setup
+     steps:
+             -run: sh test 1a     
 
