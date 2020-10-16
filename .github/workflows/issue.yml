@@ -1,7 +1,6 @@
 on:
-  issues:
-    types: [opened]
-
+  push:
+   
 jobs:
   comment:
     runs-on: ubuntu-latest
