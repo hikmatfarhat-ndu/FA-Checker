@@ -28,5 +28,5 @@ score=$(cut -d ' ' -f 5 grade|paste -sd +|bc)
 total=$(cut -d ' ' -f 7 grade|paste -sd +|bc)
 echo -e "\x1B[36mscore\033[0m $score / $total" |tee -a grade
 echo -e "\x1B[36mscore"
-./printscore 44 100
+which echo
 #echo $GITHUB_REPOSITORY|tee -a grade
