@@ -4,6 +4,9 @@ set(CMAKE_SUPPRESS_REGENERATION true)
 set(CMAKE_CXX_STANDARD 17)
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "C:/Program Files/Boost/boost_1_74_0/boost_1_74_0")
+ELSE()
+
+SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "/mnt/c/Program Files/Boost/boost_1_74_0/boost_1_74_0")
 ENDIF()
 find_package(Boost 1.72.0) 
 
