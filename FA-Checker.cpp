@@ -37,7 +37,7 @@ int main(int argc,char **argv)
        
     }
     else {
-        std::cout << "\x1B[31mcheck ALL failed 0 \033[0m could not read input\n";
+        std::cout << "\x1B[31mcheck ALL failed \033[0m 0 / 10 could not read input\n";
         exit(1);
     }
 }

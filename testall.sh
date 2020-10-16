@@ -24,6 +24,8 @@ echo "----------"
 ./FA-Checker ../2.txt ../2-tests.txt|tee -a grade
 score=$(cut -d ' ' -f 5 grade|paste -sd +|bc)
 total=$(cut -d ' ' -f 7 grade|paste -sd +|bc)
+echo "score $score"
+echo "total $total "
 if ! [ "$score" -eq "$total" ]
 then
 	exit 1
