@@ -29,7 +29,7 @@ std::optional<FA> readFA(std::string filename) {
 			boost::split(v, tmp,
 				boost::is_any_of("-"));
 			if (v.size() != 2 || v[0]!="starting") {
-				std::cout << "invalid starting state\n";
+				std::cerr<< "invalid starting state\n";
 				return {};
 			}
 			
@@ -38,7 +38,7 @@ std::optional<FA> readFA(std::string filename) {
 		}
 		// if no starting state
 		if (starting == "") {
-			std::cout << "missing starting state\n";
+			std::cerr<< "missing starting state\n";
 			return {};
 		}
 		//process the accepting set
@@ -51,14 +51,14 @@ std::optional<FA> readFA(std::string filename) {
 			boost::split(v, tmp,
 				boost::is_any_of("-,"));
 			if (v[0] != "accepting") {
-				std::cout << "invalid accepting\n";
+				std::cerr << "invalid accepting\n";
 				return {};
 			}
 			accepting.insert(v.begin() + 1, v.end());
 			break;
 		}
 		if (accepting.empty()) {
-			std::cout << "missing accepting state(s)\n";
+			std::cerr << "missing accepting state(s)\n";
 			return {};
 		}
 		nfa.starting() = starting;
@@ -79,7 +79,7 @@ std::optional<FA> readFA(std::string filename) {
 		}
 	}
 	else {
-		std::cout << "cannot open file:"<<filename<<"\n";
+		std::cerr << "cannot open file:"<<filename<<"\n";
 		//std::string s(get_current_dir_name());
 		//std::cout<<s<<std::endl;
 		return {};
