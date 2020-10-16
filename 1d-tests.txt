@@ -7,4 +7,4 @@ epsilon false 1
 1000 true 1
 11 true 1
 111 false 1
-0111101 false 1
+0111101 true 1
