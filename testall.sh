@@ -22,11 +22,11 @@ echo "----------"
 echo "Problem 2"
 echo "----------"
 ./FA-Checker ../2.txt ../2-tests.txt|tee -a grade
+cut -d ' ' -f 5 grade|paste -sd +
+cut -d ' ' -f 7 grade|paste -sd + 
 score=$(cut -d ' ' -f 5 grade|paste -sd +|bc)
 total=$(cut -d ' ' -f 7 grade|paste -sd +|bc)
-if ! [ "$score" -eq "$total" ]
-then
-	exit 1
-else
-	exit 0
-fi
+echo -e "\x1B[36mscore\033[0m $score / $total" |tee -a grade
+echo -e "\x1B[36mscore"
+./printscore 44 100
+#echo $GITHUB_REPOSITORY|tee -a grade

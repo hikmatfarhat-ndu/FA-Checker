@@ -22,7 +22,6 @@ int main(int argc,char **argv)
             std::vector<std::tuple<std::string, bool,std::string>> v = *t;
             int count = 1;
             for (auto& [a, b,c] : v) {
-                //std::cout << a << " " <<std::boolalpha<< b << "\n";
                 bool r = nfa.accept(a);
                 if (r == b)std::cout << "\x1B[32mcheck " << count
                 <<" passed \033[0m "<<c<<" / "<<c<<"\n";
@@ -38,7 +37,7 @@ int main(int argc,char **argv)
        
     }
     else {
-        std::cout << "could not read input\n";
+        std::cout << "\x1B[31mcheck ALL failed \033[0m 0 / 10 could not read input\n";
         exit(1);
     }
 }
