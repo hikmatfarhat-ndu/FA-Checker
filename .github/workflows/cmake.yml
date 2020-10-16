@@ -14,3 +14,7 @@ jobs:
 
     - name: Create Build Environment
       run: sh testall.sh
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: grade
