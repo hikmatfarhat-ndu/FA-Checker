@@ -18,3 +18,5 @@ jobs:
       with:
         name: my-artifact
         path: tests/grade
+    -name: exit
+      run: exit 1
