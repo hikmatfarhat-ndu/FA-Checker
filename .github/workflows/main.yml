@@ -22,11 +22,12 @@ jobs:
                  repo: context.repo.repo,
                  title: "new issue from action"
                   });
+            const msg= "using a constant"
             github.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: 'keep up the good work'
+                  body: msg
                   })
 #          result-encoding: string
 #      - name: get result
