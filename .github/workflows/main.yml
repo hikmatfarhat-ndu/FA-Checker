@@ -32,7 +32,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: my-artifact
+                  body: ${{my-artifact}}
                   })
 #          result-encoding: string
 #      - name: get result
