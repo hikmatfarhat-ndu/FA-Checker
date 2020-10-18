@@ -16,5 +16,5 @@ jobs:
               body: '👋 Good. Your score is!'
             })
             github.activity.listEventsForAuthenticatedUser({
-                 context.repo.owner,
+                 username:context.repo.owner,
                   });
