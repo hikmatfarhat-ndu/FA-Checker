@@ -5,7 +5,12 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      
+      - name: write to file
+        run: /bin/echo "using artifact" > output
+      - uses: actions/upload-artifact@v2
+        with:
+           name: my-artifact
+           path: output
       - uses: actions/github-script@v3
         id: set-result
         with:
@@ -27,7 +32,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: msg
+                  body: my-artifact
                   })
 #          result-encoding: string
 #      - name: get result
