@@ -1,5 +1,5 @@
 on:
-  push:
+  push
    
 jobs:
   comment:
@@ -7,10 +7,16 @@ jobs:
     steps:
       - name: write to file
         run: /bin/echo "using artifact" > output
-      - uses: actions/upload-artifact@v2
+#      - uses: actions/upload-artifact@v2
+#        with:
+#           name: artifact
+#           path: output
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
         with:
-           name: artifact
-           path: output
+          path: "output"
+
       - uses: actions/github-script@v3
         id: set-result
         with:
@@ -32,7 +38,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: artifact
+                  body: steps.read_file.outputs.contents
                   })
 #          result-encoding: string
 #      - name: get result
