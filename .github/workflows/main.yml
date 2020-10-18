@@ -18,7 +18,9 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             var fs=require('fs')
-            fs.readFile("output",'utf8')
+            fs.readFile("output",'utf8',function(err,data){
+            console.log(data)
+            })
             github.issues.createComment({
               issue_number: 3,
               owner: context.repo.owner,
