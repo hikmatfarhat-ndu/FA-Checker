@@ -5,7 +5,9 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      
       - uses: actions/github-script@v3
+        id: set-result
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -18,3 +20,7 @@ jobs:
             github.activity.listEventsForAuthenticatedUser({
                  username:context.repo.owner,
                   });
+          result-encoding: string
+      - name: get result
+        run: echo "${{steps.set-result.outputs.result}}"
+    
