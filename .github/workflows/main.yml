@@ -22,6 +22,12 @@ jobs:
                  repo: context.repo.repo,
                  title: "new issue from action"
                   });
+            github.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: 7,
+                  body: 'keep up the good work'
+                  })
 #          result-encoding: string
 #      - name: get result
 #        run: echo "${{steps.set-result.outputs.result}}"
