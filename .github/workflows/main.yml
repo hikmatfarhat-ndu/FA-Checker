@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: write to file
-        run: /bin/echo "using artifact" > output
+        run: /bin/echo "using javascript" > output
 #      - uses: actions/upload-artifact@v2
 #        with:
 #           name: artifact
@@ -37,7 +37,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: msg
+                  body: data
                   })
 #          result-encoding: string
 #      - name: get result
