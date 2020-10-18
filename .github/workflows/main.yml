@@ -38,7 +38,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: steps.read_file.outputs.contents
+                  body: ${{steps.read_file.outputs.contents}}
                   })
 #          result-encoding: string
 #      - name: get result
