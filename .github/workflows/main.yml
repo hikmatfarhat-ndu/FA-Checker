@@ -20,7 +20,7 @@ jobs:
             return github.activity.listEventsForAuthenticatedUser({
                  username:context.repo.owner,
                   });
-          result-encoding: string
+#          result-encoding: string
       - name: get result
         run: echo "${{steps.set-result.outputs.result}}"
     
