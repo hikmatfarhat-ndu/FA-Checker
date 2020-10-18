@@ -9,7 +9,7 @@ jobs:
         run: /bin/echo "using artifact" > output
       - uses: actions/upload-artifact@v2
         with:
-           name: my-artifact
+           name: artifact
            path: output
       - uses: actions/github-script@v3
         id: set-result
@@ -32,7 +32,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: 7,
-                  body: ${{my-artifact}}
+                  body: my-artifact
                   })
 #          result-encoding: string
 #      - name: get result
