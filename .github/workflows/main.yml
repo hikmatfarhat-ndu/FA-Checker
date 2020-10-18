@@ -17,10 +17,12 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Good. Your score is!'
             })
-            return github.activity.listEventsForAuthenticatedUser({
-                 username:context.repo.owner,
+            regithub.issues.create({
+                 owner:context.repo.owner,
+                 repo: context.repo.repo,
+                 title: "new issue from action"
                   });
 #          result-encoding: string
-      - name: get result
-        run: echo "${{steps.set-result.outputs.result}}"
+#      - name: get result
+#        run: echo "${{steps.set-result.outputs.result}}"
     
