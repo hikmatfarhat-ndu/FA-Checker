@@ -50,11 +50,7 @@ public:
 		//check if the transition exists
 		auto itr = transitions.find(std::make_pair(p, a));
 		if (itr != transitions.end()) {
-			auto set = std::unordered_set<STATE>(itr->second);
-			set.insert(s.begin(), s.end());
-			transitions.erase(std::make_pair(p, a));
-			transitions.insert(
-				std::make_pair(std::make_pair(p,a),set));
+			itr->second.insert(s.begin(), s.end());
 		}
 		else
 
