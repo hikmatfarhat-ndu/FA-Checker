@@ -29,7 +29,7 @@ int main(int argc,char **argv)
                     std::cout << "\x1B[31mcheck "<<count
                         <<" failed \033[0m "<<0<<" / "<<c<<" ";
                     std::cout << " Input:" << a
-                        << " Expected: " << r<< " Result:" << b << std::endl;
+                        << " Expected: " << b<< " Result:" << r << std::endl;
                 }
                 ++count;
             }

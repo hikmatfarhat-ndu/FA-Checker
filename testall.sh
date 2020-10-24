@@ -2,7 +2,10 @@
 rm -rf tests
 mkdir tests
 cd tests
-cmake .. -DBoost_INCLUDE_DIR=$BOOST_ROOT_1_72_0/include
+# if using on this machine use
+#Boost_INCLUDE_DIR=/mnt/c/Program Files/Boost/boost_1_74_0/boost_1_74_0
+#cmake .. -DBoost_INCLUDE_DIR=$BOOST_ROOT_1_72_0/include
+cmake .. -DBoost_INCLUDE_DIR='/mnt/c/Program Files/Boost/boost_1_74_0/boost_1_74_0'
 make FA-Checker
 echo "Problem 1a"
 echo "----------"

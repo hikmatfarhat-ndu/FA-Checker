@@ -1,0 +1,9 @@
+epsilon true 1
+ba false 1
+bbbbbb true 1
+aba false 1
+bba false 1
+aaabbbbbb true 1
+aaabbb false 1
+abb true 1
+aaaaaaaaaaa true 1

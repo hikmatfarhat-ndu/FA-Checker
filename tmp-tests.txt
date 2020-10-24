@@ -1,0 +1,12 @@
+epsilon true 1
+10001 false 1
+101010 true 1
+01101 false 1
+010101 false 1
+010100 false 1
+10101 false 1
+101010 true 1
+11110 true 1
+111100000 true 1
+0000 true 1
+10000 true 1

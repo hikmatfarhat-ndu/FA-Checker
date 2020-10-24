@@ -17,19 +17,22 @@ class FA {
 		boost::hash<std::pair<STATE, char>>
 		> transitions;
 
-
+	
 	std::unordered_set<STATE> step(std::unordered_set<STATE> start,
 		char a)
 	{
-		std::unordered_set<STATE> result;
+		std::unordered_set<STATE> result{};
 		for (const STATE& p : start) {
 			auto q
 				= transitions.find(std::make_pair(p, a));
-			if (q != transitions.end())
+			if (q != transitions.end()) {
 				//important to create a copy of q
 				//otherwise merge will "remove" the pair
 				// from transitions
-				result.merge(std::unordered_set<STATE>(q->second));
+				//result.merge(std::unordered_set<STATE>(q->second));
+				result.insert(q->second.begin(), q->second.end());
+				result = closure(result);
+			}
 
 		}
 		return result;
@@ -40,15 +43,29 @@ public:
 		:_starting(i), _accepting(a) {}
 	FA(STATE i,std::initializer_list<STATE> a)
 		:_starting(i),_accepting(a) {}
-
+	// TODO: add a functionality where the user
+	// can specify multiple transitions on the same input
+	// with different entries
 	void addTransition(STATE p, char a, std::unordered_set<STATE> s) {
+		//check if the transition exists
+		auto itr = transitions.find(std::make_pair(p, a));
+		if (itr != transitions.end()) {
+			auto set = std::unordered_set<STATE>(itr->second);
+			set.insert(s.begin(), s.end());
+			transitions.erase(std::make_pair(p, a));
+			transitions.insert(
+				std::make_pair(std::make_pair(p,a),set));
+		}
+		else
+
 		transitions.insert(
 			std::make_pair(std::make_pair(p,a) ,s)
 		);
 	}
 	
 	std::unordered_set<STATE> run(std::string input) {
-		std::unordered_set<STATE> res{ _starting };
+		std::unordered_set<STATE> res=
+			closure(std::unordered_set<STATE>{_starting});
 		for (auto& a : input) 
 			res = step(res, a);
 		return res;
@@ -67,5 +84,23 @@ public:
 	}
 	std::unordered_set<STATE> & accepting() {
 		return _accepting;
+	}
+	std::unordered_set<STATE> closure(STATE p) {
+		std::unordered_set<STATE> result{ p };
+		auto q = transitions.find(std::make_pair(p, 'e'));
+		if (q != transitions.end())
+			result.insert(q->second.begin(), q->second.end());
+
+		return result;
+	}
+	std::unordered_set<STATE> closure(std::unordered_set<STATE> s) {
+		std::unordered_set<STATE> result;
+		for (auto p : s) {
+			auto q = closure(p);
+			result.insert(q.begin(), q.end());
+		}
+		if (s == result)return result;
+		else return closure(result);
+		//return result;
 	}
 };

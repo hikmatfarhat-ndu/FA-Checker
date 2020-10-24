@@ -22,7 +22,7 @@ readTests(std::string filename) {
 	std::vector<std::tuple<std::string,bool,std::string>> tests;
 	if (file.is_open()) {
 		while (file >> input >> expected>>points) {
-			if (input == "epsilon")input = "";
+			if (input == "epsilon" || input=="e")input = "";
 			bool e = (tolower(expected) == "true" ? true : false);
 			tests.push_back(std::make_tuple(input, e,points));
 		}
