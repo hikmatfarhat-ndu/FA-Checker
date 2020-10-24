@@ -2,35 +2,32 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <string>
+#include <initializer_list>
 #include <boost/container_hash/hash.hpp>
+constexpr auto EPSILON = 'e';
 using STATE = std::string;
+using set= std::unordered_set<STATE>;
 class FA {
 
 	// We have to supply a hash function
 	// for std::pair. Instead we are using
 	// Boost to do that
 	STATE _starting;
-	std::unordered_set<STATE> _accepting;
-
+	set _accepting;
+	//transitions of the form state X char -> set of states
 	std::unordered_map < std::pair<STATE, char>,
-		std::unordered_set<STATE>,
+		set,
 		boost::hash<std::pair<STATE, char>>
 		> transitions;
 
-	
-	std::unordered_set<STATE> step(std::unordered_set<STATE> start,
-		char a)
-	{
-		std::unordered_set<STATE> result{};
+	// returns the result of a single step 
+	set step(set start,char a){
+		set result{};
 		for (const STATE& p : start) {
-			auto q
+			auto itr
 				= transitions.find(std::make_pair(p, a));
-			if (q != transitions.end()) {
-				//important to create a copy of q
-				//otherwise merge will "remove" the pair
-				// from transitions
-				//result.merge(std::unordered_set<STATE>(q->second));
-				result.insert(q->second.begin(), q->second.end());
+			if (itr != transitions.end()) {
+				result.insert(itr->second.begin(), itr->second.end());
 				result = closure(result);
 			}
 
@@ -39,32 +36,27 @@ class FA {
 	}
 public:
 	FA() {}
-	FA(STATE i, std::unordered_set<STATE> a)
+	FA(STATE i, set a)
 		:_starting(i), _accepting(a) {}
 	FA(STATE i,std::initializer_list<STATE> a)
 		:_starting(i),_accepting(a) {}
-	// TODO: add a functionality where the user
-	// can specify multiple transitions on the same input
-	// with different entries
-	void addTransition(STATE p, char a, std::unordered_set<STATE> s) {
+	
+	void addTransition(STATE p, char a, set s) {
 		//check if the transition exists
 		auto itr = transitions.find(std::make_pair(p, a));
-		if (itr != transitions.end()) {
+		if (itr != transitions.end()) 
 			itr->second.insert(s.begin(), s.end());
-		}
 		else
-
-		transitions.insert(
-			std::make_pair(std::make_pair(p,a) ,s)
+			transitions.insert(
+				std::make_pair(std::make_pair(p,a) ,s)
 		);
 	}
 	
-	std::unordered_set<STATE> run(std::string input) {
-		std::unordered_set<STATE> res=
-			closure(std::unordered_set<STATE>{_starting});
+	set run(std::string input) {
+		set result = closure({ _starting });
 		for (auto& a : input) 
-			res = step(res, a);
-		return res;
+			result = step(result, a);
+		return result;
 	}
 	bool accept(std::string input) {
 		auto res = run(input);
@@ -78,25 +70,31 @@ public:
 	STATE& starting() {
 		return _starting;
 	}
-	std::unordered_set<STATE> & accepting() {
+	set & accepting() {
 		return _accepting;
 	}
-	std::unordered_set<STATE> closure(STATE p) {
-		std::unordered_set<STATE> result{ p };
-		auto q = transitions.find(std::make_pair(p, 'e'));
-		if (q != transitions.end())
-			result.insert(q->second.begin(), q->second.end());
 
-		return result;
-	}
-	std::unordered_set<STATE> closure(std::unordered_set<STATE> s) {
-		std::unordered_set<STATE> result;
+	set closure(set s) {
+		set result;
+		// define "single step " closure function
+		auto cl = [this](auto q) {
+			set result{ q };
+			auto itr = transitions.find(std::make_pair(q, EPSILON));
+			if (itr != transitions.end())
+				result.insert(itr->second.begin(), itr->second.end());
+
+			return result;
+		};
+
 		for (auto p : s) {
-			auto q = closure(p);
+			auto q = cl(p);
 			result.insert(q.begin(), q.end());
 		}
 		if (s == result)return result;
 		else return closure(result);
-		//return result;
+	}
+	std::unordered_set<STATE>
+		closure(std::initializer_list<STATE> list) {
+		return closure(std::unordered_set<STATE>(list));
 	}
 };
