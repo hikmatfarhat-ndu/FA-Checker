@@ -14,19 +14,19 @@ class FA {
 	// Boost to do that
 	STATE _starting;
 	set _accepting;
-	//transitions of the form state X char -> set of states
+	//_transitions of the form state X char -> set of states
 	std::unordered_map < std::pair<STATE, char>,
 		set,
 		boost::hash<std::pair<STATE, char>>
-		> transitions;
+		> _transitions;
 
 	// returns the result of a single step 
 	set step(set start,char a){
 		set result{};
 		for (const STATE& p : start) {
 			auto itr
-				= transitions.find(std::make_pair(p, a));
-			if (itr != transitions.end()) {
+				= _transitions.find(std::make_pair(p, a));
+			if (itr != _transitions.end()) {
 				result.insert(itr->second.begin(), itr->second.end());
 				result = closure(result);
 			}
@@ -43,11 +43,11 @@ public:
 	
 	void addTransition(STATE p, char a, set s) {
 		//check if the transition exists
-		auto itr = transitions.find(std::make_pair(p, a));
-		if (itr != transitions.end()) 
+		auto itr = _transitions.find(std::make_pair(p, a));
+		if (itr != _transitions.end()) 
 			itr->second.insert(s.begin(), s.end());
 		else
-			transitions.insert(
+			_transitions.insert(
 				std::make_pair(std::make_pair(p,a) ,s)
 		);
 	}
@@ -79,8 +79,8 @@ public:
 		// define "single step " closure function
 		auto cl = [this](auto q) {
 			set result{ q };
-			auto itr = transitions.find(std::make_pair(q, EPSILON));
-			if (itr != transitions.end())
+			auto itr = _transitions.find(std::make_pair(q, EPSILON));
+			if (itr != _transitions.end())
 				result.insert(itr->second.begin(), itr->second.end());
 
 			return result;
@@ -96,5 +96,11 @@ public:
 	std::unordered_set<STATE>
 		closure(std::initializer_list<STATE> list) {
 		return closure(std::unordered_set<STATE>(list));
+	}
+
+	std::unordered_map < std::pair<STATE, char>,
+		set,boost::hash<std::pair<STATE, char>>>& 
+		transitions() {
+		return _transitions;
 	}
 };
