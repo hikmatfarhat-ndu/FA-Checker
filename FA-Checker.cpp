@@ -9,15 +9,23 @@
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
 #include "utils.h"
-
+bool debug=false;
 int main(int argc,char **argv)
 {
     if (argc < 3) {
         std::cout << "Usage FA-checker NFA-description Tests\n";
         exit(1);
     }
+    if (argc == 4) {
+        debug = true;
+    }
     if (auto n = readFA(argv[1]) ) {
+        
         FA nfa = *n;
+        if (debug) {
+            std::cout << "checking \n";
+            nfa.debug();
+        }
         if (auto t = readTests(argv[2])) {
             std::vector<std::tuple<std::string, bool,std::string>> v = *t;
             int count = 1;

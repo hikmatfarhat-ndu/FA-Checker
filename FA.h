@@ -103,4 +103,20 @@ public:
 		transitions() {
 		return _transitions;
 	}
+	void debug() {
+		std::cout << "starting state: " << _starting << std::endl;
+		std::cout << "accepting state(s): ";
+		for (auto& x : _accepting)
+			std::cout << x << ",";
+		std::cout << std::endl;
+		std::cout << "transitions\n";
+		for (auto& [key, val] : _transitions) {
+			std::cout << key.first << "," << key.second << "->";
+			for (auto& s : val)
+				std::cout << s << ",";
+			std::cout << std::endl;
+
+		}
+
+	}
 };
