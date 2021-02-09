@@ -10,7 +10,6 @@ SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "/mnt/c/Program Files/Boost/boost_1
 ENDIF()
 find_package(Boost 1.72.0) 
 
-add_executable(FA-Checker FA-Checker.cpp readFA.cpp readTests.cpp )
-add_executable(printscore printscore.cpp)
-target_include_directories(FA-Checker PUBLIC "${PROJECT_SOURCE_DIR}")
+add_executable(FaChecker FaChecker.cpp readFA.cpp )
+target_include_directories(FaChecker PUBLIC "${PROJECT_SOURCE_DIR}")
 include_directories(${Boost_INCLUDE_DIRS}) 

@@ -146,10 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="json_reader.cpp" />
+    <ClCompile Include="FaChecker.cpp" />
     <ClCompile Include="readFA.cpp" />
-    <ClCompile Include="readTests.cpp" />
-    <ClCompile Include="utilities.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FA.h" />

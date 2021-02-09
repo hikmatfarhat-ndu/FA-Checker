@@ -6,16 +6,19 @@
 #include "utils.h"
 using nlohmann::json;
 
+
+void report(const json& tree) {
+
+	std::cout << tree.dump(4) << "\n";
+}
 void runTests(json& p) {
 	FA nfa{};
 	try {
 		nfa=parse_fa(p["NFA-specs"]);
-		std::cout << "fsa file found\n";
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "problem " << p["name"] << "\n";
 	json& tests = p["tests"];
 	bool flip = false;
 	int total = 0;
@@ -31,11 +34,7 @@ void runTests(json& p) {
 		else {
 			total += t["points"];
 		}
-	/*	t["output"] = true;
-		t["non existent"] = "appeared";
-		if (flip)t["points"] = 0;
-		flip = !flip;
-		total += t["points"];*/
+	
 	}
 	p["total"] = total;
 	p["max points"] = possible;
@@ -60,11 +59,11 @@ void  runProblems(std::string filename) {
 	}
 	json& problems = tree["problems"];
 	for (auto& p : problems)runTests(p);
-	std::cout<<tree.dump(4)<<"\n";
+	report(tree);
 }
 int main(int argc,char **argv) {
 	if (argc < 2) {
-		std::cout << "usage: parse_problems filename.json\n";
+		std::cout << "usage: FaChecker filename.json\n";
 		exit(1);
 	}
 	runProblems(argv[1]);
