@@ -1,37 +1,32 @@
-#include <optional>
-#include <fstream>
-#include <vector>
-#include <string>
 #include <iostream>
-#include <utility>
-#include <algorithm>
+#include <fstream>
+#include <iterator>
+#include <string>
+#include <exception>
+#include <vector>
 #include <tuple>
-std::string tolower(std::string s) {
-	std::transform(s.begin(), s.end(),
-		s.begin(),
-		[](auto c) {return std::tolower(c); });
-	return s;
+#include "FA.h"
+#include "json.hpp"
+#include "utils.h"
 
-}
-std::optional<std::vector<std::tuple<std::string,bool,std::string>>>
-readTests(std::string filename) {
-
+std::vector<std::tuple<std::string, bool, float>>
+parse_tests(std::string filename) {
+	std::vector<std::tuple<std::string, bool, float>>
+		results;
+	using nlohmann::json;
 	std::ifstream file;
 	file.open(filename);
-	std::string input, expected,points;
-	std::vector<std::tuple<std::string,bool,std::string>> tests;
-	if (file.is_open()) {
-		while (file >> input >> expected>>points) {
-			if (input == "epsilon")input = "";
-			bool e = (tolower(expected) == "true" ? true : false);
-			tests.push_back(std::make_tuple(input, e,points));
-		}
-		file.close();
-		return tests;
-	}
+	std::string input(std::istreambuf_iterator<char>{file}, {});
+	file.close();
+	auto p = json::parse(input);
 
-	else {
-		std::cout << "cannot open file:" << filename << "\n";
-		return {};
+	auto tests = p["tests"];
+	for (auto& t : tests) {
+		results.push_back(
+			std::make_tuple(t["input"], t["accept"], t["points"])
+		);
+
 	}
+	
+	return results;
 }
