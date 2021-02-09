@@ -8,7 +8,7 @@
                 {
                     "name":"test1",
                     "input":"01101",
-                    "expected-output":false,
+                    "expected-output":true,
                     "points":1
                 },
                 {

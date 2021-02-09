@@ -3,8 +3,10 @@
 #include "FA.h"
 
 
-std::string print_fail(std::string s);
-std::string print_success(std::string s);
+std::string fail(std::string s);
+std::string success(std::string s);
+std::string message(std::string);
+std::string error(std::string);
 
 FA parse_fa(std::string);
 

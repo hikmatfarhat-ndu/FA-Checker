@@ -105,17 +105,17 @@ public:
 		return _transitions;
 	}
 	void debug() {
-		std::cout << "starting state: " << _starting << std::endl;
-		std::cout << "accepting state(s): ";
+		std::cerr << "starting state: " << _starting << std::endl;
+		std::cerr << "accepting state(s): ";
 		for (auto& x : _accepting)
-			std::cout << x << ",";
-		std::cout << std::endl;
-		std::cout << "transitions\n";
+			std::cerr << x << ",";
+		std::cerr << std::endl;
+		std::cerr << "transitions\n";
 		for (auto& [key, val] : _transitions) {
-			std::cout << key.first << "," << key.second << "->";
+			std::cerr << key.first << "," << key.second << "->";
 			for (auto& s : val)
-				std::cout << s << ",";
-			std::cout << std::endl;
+				std::cerr << s << ",";
+			std::cerr << std::endl;
 
 		}
 
