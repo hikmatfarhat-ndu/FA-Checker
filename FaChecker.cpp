@@ -24,7 +24,7 @@ void runTests(json& p) {
 	int total = 0;
 	int possible = 0;
 	for (auto& t : tests) {
-		possible += t["points"];
+		possible += static_cast<int> (t["points"]);
 		bool r = nfa.accept(t["input"]);
 		bool er = t["expected-output"];
 		if (r != er) {
@@ -32,7 +32,7 @@ void runTests(json& p) {
 			t["points"] = 0;
 		}
 		else {
-			total += t["points"];
+			total += static_cast<int>(t["points"]);
 		}
 	
 	}
