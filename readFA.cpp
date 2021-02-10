@@ -7,6 +7,7 @@
 #include <boost/algorithm/string.hpp>
 #include "FA.h"
 
+
 std::optional<FA> readFA(std::string filename) {
 	std::ifstream file;
 	file.open(filename);
