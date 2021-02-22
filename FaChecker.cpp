@@ -60,13 +60,37 @@ int dump(const json& tree) {
 	return total;
 }
 void runTests(json& p) {
-	
-	FA nfa=parse_fa(p["NFA-specs"]);
+	int total = 0;
+	int possible = 0;
+	FA nfa;
+	auto on_fail = [&]() {
+		p["total"] = total;
+		p["max points"] = possible;
+		for (auto& t : p["tests"])
+			t["points"] = 0;
+	};
+	try {
+		nfa = parse_fa(p["NFA-specs"]);
+	}
+	catch (invalid_spec& e) {
+		std::cerr << e.what()<<"\n";
+		on_fail();
+		return;
+	}
+	catch (std::ios_base::failure& e) {
+		std::cerr <<"Cannot open/read file "<<p["NFA-specs"]<<"\n";
+		on_fail();
+		return;
+	}
+	catch (...) {
+		std::cerr <<"unknown error\n";
+		on_fail();
+		return;
+	}
 
 	json& tests = p["tests"];
 	bool flip = false;
-	int total = 0;
-	int possible = 0;
+
 	for (auto& t : tests) {
 		possible += static_cast<int> (t["points"]);
 		bool r = nfa.accept(t["input"]);

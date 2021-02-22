@@ -31,7 +31,10 @@ FA parse_fa (std::string filename) {
 	std::unordered_set<STATE> accepting;
 	using nlohmann::json;
 	std::ifstream file;
-	file.open(filename);
+	file.exceptions(std::ifstream::failbit);
+
+    file.open(filename);
+	
 	std::string input(std::istreambuf_iterator<char>{file}, {});
 	file.close();
 	auto fsa = json::parse(input);
@@ -50,7 +53,8 @@ FA parse_fa (std::string filename) {
 	int idx1, idx2;
 	for (auto itr = links.begin(); itr != links.end(); ++itr) {
 		s = (*itr)["text"];
-		if (s.size() == 0 && (*itr)["type"]!="StartLink") {
+		std::string link_type = (*itr)["type"];
+		if (s.size() == 0 && link_type!="StartLink") {
 			has_missing_label = true;
 			break;
 		}
@@ -80,11 +84,11 @@ FA parse_fa (std::string filename) {
 		}
 	}
 	if (has_missing_label == true)
-		throw invalid_spec("missing label on transition");
+		throw invalid_spec("missing label on transition "+filename);
 	if (has_starting == false)
-		throw invalid_spec("no starting state");
+		throw invalid_spec("no starting state "+filename);
 	if (has_accepting == false)
-		throw invalid_spec("no accepting state");
+		throw invalid_spec("no accepting state "+filename);
 	
 	return nfa;
 }
