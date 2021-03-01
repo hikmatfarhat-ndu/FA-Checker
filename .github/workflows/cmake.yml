@@ -14,8 +14,6 @@ jobs:
 
     - name: Create Build Environment
       run: sh setup.sh
-  test1:
-     needs: setup
-     steps:
-             -run: sh test 1a     
+    - name: test1a
+      run: sh test 1a     
 
