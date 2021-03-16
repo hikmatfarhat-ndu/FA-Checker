@@ -11,15 +11,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: lukka/run-vcpkg@v4
-      with:
-        vcpkgArguments: 'boost-container-hash boost-algorithm'
-        setupOnly: true
+    #- uses: lukka/run-vcpkg@v4
+    #  with:
+    #    vcpkgArguments: 'boost-container-hash boost-algorithm'
+    #    setupOnly: true
     #    vcpkgDirectory: '${VCPKG_INSTALLATION_ROOT}'
-    #- name: install boost-container-hash
-    #  run: |
-    #     vcpkg install boost-container-hash
-    #     vcpkg install boost-algorithm
+    - name: install boost-container-hash
+      run: |
+         vcpkg install boost-container-hash
+         vcpkg install boost-algorithm
     - name: cmake build
       run: |
           cmake -S . -B build
