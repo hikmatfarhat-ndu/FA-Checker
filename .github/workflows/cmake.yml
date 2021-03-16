@@ -18,6 +18,7 @@ jobs:
       run: |
           cmake -S . -B build
     - name: build
+      run: |
           cmake --build build --config Release
     #- name: Create Build Environment
     #  run: sh testall.sh
