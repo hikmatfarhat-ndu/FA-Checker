@@ -14,6 +14,7 @@ jobs:
     - name: install boost-container-hash
       run: |
          vcpkg install boost-container-hash
+         vcpkg install boost-algorithm
     - name: cmake build
       run: |
           cmake -S . -B build
