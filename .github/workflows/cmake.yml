@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install boost-container-hash
+      run: |
+         vcpkg install boost-container-hash
     - name: cmake build
       run: |
           cmake -S . -B build
