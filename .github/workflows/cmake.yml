@@ -11,12 +11,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: cache-vcpkg
+      id: cache-vcpkg
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache
+        key: ${{runner.os}}-vcpkg
     #- uses: lukka/run-vcpkg@v4
     #  with:
     #    vcpkgArguments: 'boost-container-hash boost-algorithm'
     #    setupOnly: true
     #    vcpkgDirectory: '${VCPKG_INSTALLATION_ROOT}'
     - name: install boost-container-hash
+      if: steps.cache-vcpkg.outputs.cache-hit != 'true'
       run: |
          vcpkg install boost-container-hash
          vcpkg install boost-algorithm
