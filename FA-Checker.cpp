@@ -1,6 +1,7 @@
 // FA-Checker.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+
 #include <iostream>
 #include <utility>
 #include <unordered_map>
@@ -9,6 +10,8 @@
 #include <boost/container_hash/hash.hpp>
 #include "FA.h"
 #include "utils.h"
+
+
 bool debug=false;
 int main(int argc,char **argv)
 {
