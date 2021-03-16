@@ -11,11 +11,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Create Build Environment
-      run: sh testall.sh
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-
-        path: tests/grade
+    - name: cmake build
+      run: |
+          cmake -S . -B build
+    #- name: Create Build Environment
+    #  run: sh testall.sh
+    #- uses: actions/upload-artifact@v2
+    #  with:
+    #    name: my-artifact
+    #
+    #    path: tests/grade
