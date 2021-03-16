@@ -17,6 +17,8 @@ jobs:
     - name: cmake build
       run: |
           cmake -S . -B build
+    - name: build
+          cmake --build build --config Release
     #- name: Create Build Environment
     #  run: sh testall.sh
     #- uses: actions/upload-artifact@v2
