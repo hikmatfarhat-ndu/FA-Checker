@@ -14,6 +14,7 @@ jobs:
     - uses: lukka/run-vcpkg@v4
       with:
         vcpkgArguments: 'boost-container-hash boost-algorithm'
+        setupOnly: true
     #    vcpkgDirectory: '${VCPKG_INSTALLATION_ROOT}'
     #- name: install boost-container-hash
     #  run: |
