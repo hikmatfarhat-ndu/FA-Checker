@@ -23,7 +23,7 @@ jobs:
     #    setupOnly: true
     #    vcpkgDirectory: '${VCPKG_INSTALLATION_ROOT}'
     - name: install boost-container-hash
-      if: steps.cache-vcpkg.outputs.cache-hit != 'true'
+     # if: steps.cache-vcpkg.outputs.cache-hit != 'true'
       run: |
          vcpkg install boost-container-hash
          vcpkg install boost-algorithm
